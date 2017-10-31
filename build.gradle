@@ -44,3 +44,18 @@ dependencies {
     compile "org.apache.geronimo.specs:geronimo-osgi-locator:1.1"
     compile "org.apache.geronimo.components:geronimo-jaspi:2.0.0"
 }
+
+
+task cfPush(type:Exec) {
+    group 'build'
+    description 'Task to deploy artifact to cloud'
+
+    println 'Uploading artifact to cloud .. '
+    commandLine 'sh', './cfpush.sh'
+
+    doLast {
+        println '########################'
+        println 'cf push task completed..'
+        println '########################'
+    }
+}
